@@ -36,18 +36,27 @@
     <inceptionYear>2019</inceptionYear>
 
     <properties>
+        <!-- project settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <license-plugin.version>3.0</license-plugin.version>
-
+        
+        <!-- compile dependencies -->
         <spring.version>5.1.6.RELEASE</spring.version>
         <slf4j.version>1.7.25</slf4j.version>
         <spotbugs.version>3.1.12</spotbugs.version>
+        
+        <!-- test dependencies -->
+        <groovy.version>2.5.6</groovy.version>
+        <spock.version>1.3-groovy-2.5</spock.version>
+        <gmavenplus.version>1.6.3</gmavenplus.version>
+        <surefire.version>2.22.1</surefire.version>
     </properties>
 
     <dependencies>
+        <!-- compile -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -63,10 +72,64 @@
             <artifactId>spotbugs-annotations</artifactId>
             <version>${spotbugs.version}</version>
         </dependency>
+        
+        <!-- test -->
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${groovy.version}</version>
+            <classifier>indy</classifier>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.spockframework</groupId>
+            <artifactId>spock-spring</artifactId>
+            <version>${spock.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
+        <testSourceDirectory>src/test/groovy</testSourceDirectory>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.gmavenplus</groupId>
+                <artifactId>gmavenplus-plugin</artifactId>
+                <version>${gmavenplus.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compileTests</goal>
+                        </goals>
+                        <configuration>
+                            <invokeDynamic>true</invokeDynamic>
+                            <warningLevel>2</warningLevel>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${surefire.version}</version>
+                <configuration>
+                    <printSummary>false</printSummary>
+                    <includes>
+                        <include>**/*Spec.*</include>
+                    </includes>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
                 <artifactId>license-maven-plugin</artifactId>
@@ -78,6 +141,7 @@
                     </properties>
                     <excludes>
                         <exclude>LICENSE</exclude>
+                        <exclude>**/*.properties</exclude>
                     </excludes>    
                 </configuration>
             </plugin>
