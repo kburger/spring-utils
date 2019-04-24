@@ -4,6 +4,8 @@ jdk:
 script:
   - mvn tidy:check license:check com.github.spotbugs:spotbugs-maven-plugin:check
   - mvn --fail-fast verify
+after_success:
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent verify org.jacoco:jacoco-maven-plugin:report org.eluder.coveralls:coveralls-maven-plugin:report
 cache:
   directories:
     - $HOME/.m2
