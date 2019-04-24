@@ -25,15 +25,15 @@ package com.github.kburger.spring.utils.conditions;
 /**
  * Convenience flags to clarify the boolean return values of {@link org.springframework.context.annotation.Condition#matches(org.springframework.context.annotation.ConditionContext, org.springframework.core.type.AnnotatedTypeMetadata) Condition.matches(context, metadata)}.
  */
-public class ConditionFlags {
+public interface ConditionFlags {
     /**
      * <blockquote>if the condition matches and the component can be registered</blockquote>
      * @see org.springframework.context.annotation.Condition#matches(org.springframework.context.annotation.ConditionContext, org.springframework.core.type.AnnotatedTypeMetadata)
      */
-    static final boolean ALLOW_BEAN_REGISTRATION = true;
+    boolean ALLOW_BEAN_REGISTRATION = true;
     /**
      * <blockquote>to veto the annotated component's registration</blockquote>
      * @see org.springframework.context.annotation.Condition#matches(org.springframework.context.annotation.ConditionContext, org.springframework.core.type.AnnotatedTypeMetadata)
      */
-    static final boolean VETO_BEAN_REGISTRATION = false;
+    boolean VETO_BEAN_REGISTRATION = false;
 }

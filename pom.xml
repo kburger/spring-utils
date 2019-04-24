@@ -42,6 +42,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <license-plugin.version>3.0</license-plugin.version>
+        <coveralls-plugin.version>4.3.0</coveralls-plugin.version>
         
         <!-- compile dependencies -->
         <spring.version>5.1.6.RELEASE</spring.version>
@@ -144,6 +145,19 @@
                         <exclude>**/*.properties</exclude>
                     </excludes>    
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>${coveralls-plugin.version}</version>
+                <dependencies>
+                    <!-- hardcoded dependency and version, see https://github.com/trautonen/coveralls-maven-plugin/issues/112 -->
+                    <dependency>
+                        <groupId>javax.xml.bind</groupId>
+                        <artifactId>jaxb-api</artifactId>
+                        <version>2.3.1</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
