@@ -78,7 +78,7 @@ class ExistingBeanConditionSpec extends Specification {
     def "non-available bean factory"() {
         when:
         condition.matches([getBeanFactory: { -> null }] as ConditionContext,
-            [getReturnTypeName: { -> "java.lang.Object"}] as MethodMetadata)
+            [getReturnTypeName: { -> "java.lang.Object" }] as MethodMetadata)
         
         then:
         def ex = thrown(IllegalStateException)
