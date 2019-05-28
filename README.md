@@ -3,6 +3,7 @@ Some convenience utils for Spring Framework.
 
 [![Build Status](https://travis-ci.com/kburger/spring-utils.svg?branch=develop)](https://travis-ci.com/kburger/spring-utils)
 [![Coverage Status](https://coveralls.io/repos/github/kburger/spring-utils/badge.svg?branch=develop)](https://coveralls.io/github/kburger/spring-utils?branch=develop)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=kburger/spring-utils)](https://dependabot.com)
 
 ## Quickstart
 Add the `spring-utils` artifact to the POM's `project.dependencies` section.
