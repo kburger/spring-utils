@@ -46,7 +46,7 @@
         
         <!-- compile dependencies -->
         <spring.version>5.1.9.RELEASE</spring.version>
-        <slf4j.version>1.7.26</slf4j.version>
+        <slf4j.version>1.7.27</slf4j.version>
         <spotbugs.version>3.1.12</spotbugs.version>
         
         <!-- test dependencies -->
