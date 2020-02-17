@@ -47,7 +47,7 @@
         <!-- compile dependencies -->
         <spring.version>5.2.0.RELEASE</spring.version>
         <slf4j.version>1.7.28</slf4j.version>
-        <spotbugs.version>3.1.12</spotbugs.version>
+        <spotbugs.version>4.0.0</spotbugs.version>
         
         <!-- test dependencies -->
         <groovy.version>2.5.8</groovy.version>
